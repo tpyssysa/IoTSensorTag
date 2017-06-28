@@ -41,7 +41,7 @@ Rectangle {
         Button {
             id: sensorButton
             property bool addressQuery: false
-            text: !addressQuery ? qsTr("Sensor Mode") : qsTr("Enter Mac Address Below and Press Me")
+            text: !addressQuery ? qsTr("Sensor Mode") : qsTr("Enter Tag Mac Address Below")
             width: 0.8 * root.width
 
             contentItem: Text {
@@ -68,8 +68,7 @@ Rectangle {
             color: "white"
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Style.topToolbarLargeFontSize
-            focus: true
-            text: "24:71:89:BF:3B:82"
+            text: "24:71:89:BC:44:82"
         }
     }
 

@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
         // List of devices used in Embedded World
         static_cast<SensorTagDataProviderPool*>(dataProviderPool)->setMacFilterList(QStringList() <<
                                                                                     "24:71:89:BF:3B:82" <<
-                                                                                    "24:71:89:BC:44:82");
+                                                                                    "24:71:89:BC:44:83");
     }
 #endif
     else if (sensorSource == QString("mock").toLower()){
