@@ -52,8 +52,8 @@ import QtQuick.Window 2.0
 
 Window {
     // Size defaults to the small display
-    width: 1920
-    height: 1080
+    //    width: 1920
+    //    height: 1080
     visible: true
     color: "black"
 
@@ -68,8 +68,8 @@ Window {
         height: 0.8 * parent.height
         opacity: 0.8
         onDialogClosed: {
-            initCompleter.completeInitialization(mode, address);
-            mainLoader.active = true;
+            initCompleter.completeInitialization(mode, address)
+            mainLoader.active = true
         }
     }
 
