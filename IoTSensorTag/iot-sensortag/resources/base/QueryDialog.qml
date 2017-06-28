@@ -5,16 +5,24 @@ import Style 1.0
 Rectangle {
     id: root
 
+    opacity: 0.8
+
     property int borderWidth: 4
 
     signal dialogClosed(int mode, string address)
 
-    visible: opacity > 0.2
-    border { width: borderWidth; color: "white" }
+    //    visible: opacity > 0.2
+    border {
+        width: borderWidth
+        color: "white"
+    }
 
     Image {
         source: "images/bg_blue.jpg"
-        anchors { fill: parent; margins: borderWidth }
+        anchors {
+            fill: parent
+            margins: borderWidth
+        }
     }
 
     Column {
@@ -33,15 +41,16 @@ Rectangle {
                 elide: Text.ElideRight
             }
             onClicked: {
-                root.opacity = 0.2;
-                dialogClosed(0, "");
+                root.opacity = 0.2
+                dialogClosed(0, "")
             }
         }
 
         Button {
             id: sensorButton
             property bool addressQuery: false
-            text: !addressQuery ? qsTr("Sensor Mode") : qsTr("Enter Tag Mac Address Below")
+            text: !addressQuery ? qsTr("Sensor Mode") : qsTr(
+                                      "Enter Tag Mac Address Below")
             width: 0.8 * root.width
 
             contentItem: Text {
@@ -53,11 +62,11 @@ Rectangle {
             }
             onClicked: {
                 if (addressQuery) {
-                    root.opacity = 0.2;
-                    dialogClosed(1, textInput.text);
+                    root.opacity = 0.2
+                    dialogClosed(1, textInput.text)
                 }
-                addressQuery = !addressQuery;
-                textInput.visible = true;
+                addressQuery = !addressQuery
+                textInput.visible = true
             }
         }
 
@@ -73,7 +82,7 @@ Rectangle {
     }
 
     Behavior on opacity {
-        NumberAnimation { }
+        NumberAnimation {
+        }
     }
 }
-

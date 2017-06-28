@@ -48,29 +48,32 @@
 **
 ****************************************************************************/
 import QtQuick 2.6
-import QtQuick.Window 2.0
+import QtQuick.Window 2.2
 
 Window {
     // Size defaults to the small display
-    //    width: 1920
-    //    height: 1080
+    //    visibility: Window.FullScreen
+    id: mainwindow
     visible: true
-    color: "black"
 
     Image {
         source: "images/bg_blue.jpg"
         anchors.fill: parent
     }
 
-    QueryDialog {
+    Component.onCompleted: {
+        queryDialogLoader.visible = true
+    }
+
+    Loader {
+        id: queryDialogLoader
+        source: "QueryDialog.qml"
+        active: true
+        visible: false
         anchors.centerIn: parent
         width: 0.8 * parent.width
         height: 0.8 * parent.height
-        opacity: 0.8
-        onDialogClosed: {
-            initCompleter.completeInitialization(mode, address)
-            mainLoader.active = true
-        }
+        asynchronous: true
     }
 
     Loader {
@@ -79,5 +82,14 @@ Window {
 
         anchors.fill: parent
         source: "AppMainWindow.qml"
+    }
+
+    Connections {
+        target: queryDialogLoader.item
+        onDialogClosed: {
+            initCompleter.completeInitialization(mode, address)
+            mainLoader.active = true
+            queryDialogLoader.active = false
+        }
     }
 }

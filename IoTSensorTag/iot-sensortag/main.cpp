@@ -223,11 +223,12 @@ int main(int argc, char *argv[])
 
     QQuickWindow *item = qobject_cast<QQuickWindow *>(engine.rootObjects()[0]);
     if (item) {
-//        item->setWidth(appWidth);
-//        item->setHeight(appHeight);
-
-        if (fullScreen)
+        if (fullScreen) {
             item->showFullScreen();
+        } else {
+            item->setWidth(appWidth);
+            item->setHeight(appHeight);
+        }
     }
 
     int returnValue = app.exec();
