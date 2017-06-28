@@ -221,15 +221,17 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    QQuickWindow *item = qobject_cast<QQuickWindow *>(engine.rootObjects()[0]);
-    if (item) {
-        if (fullScreen) {
-            item->showFullScreen();
-        } else {
-            item->setWidth(appWidth);
-            item->setHeight(appHeight);
-        }
-    }
+  // not needed to have this code for tablets/phones
+
+//    QQuickWindow *item = qobject_cast<QQuickWindow *>(engine.rootObjects()[0]);
+//    if (item) {
+//        if (fullScreen) {
+//            item->showFullScreen();
+//        } else {
+//            item->setWidth(appWidth);
+//            item->setHeight(appHeight);
+//        }
+//    }
 
     int returnValue = app.exec();
     dataProviderPool->stopScanning();

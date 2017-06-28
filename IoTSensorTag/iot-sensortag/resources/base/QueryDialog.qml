@@ -11,7 +11,6 @@ Rectangle {
 
     signal dialogClosed(int mode, string address)
 
-    //    visible: opacity > 0.2
     border {
         width: borderWidth
         color: "white"

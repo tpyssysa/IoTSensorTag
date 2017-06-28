@@ -51,17 +51,21 @@ import QtQuick 2.6
 import QtQuick.Window 2.2
 
 Window {
-    // Size defaults to the small display
-    //    visibility: Window.FullScreen
     id: mainwindow
-    visible: true
 
+    //Google pixel C default screen sizes
+    width: 2560
+    height: 1800
+
+    visibility: Window.AutomaticVisibility
+    visible: true
     Image {
         source: "images/bg_blue.jpg"
         anchors.fill: parent
     }
 
     Component.onCompleted: {
+        //        showFullScreen()
         queryDialogLoader.visible = true
     }
 
