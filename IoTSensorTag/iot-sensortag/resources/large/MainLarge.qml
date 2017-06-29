@@ -64,6 +64,7 @@ Item {
     Connections {
         target: dataProviderPool
         onScanFinished: {
+            console.log("test")
             ambientTemp.sensor = dataProviderPool.getProvider(SensorTagData.AmbientTemperature);
             objectTemp.sensor = dataProviderPool.getProvider(SensorTagData.ObjectTemperature);
             humidity.sensor = dataProviderPool.getProvider(SensorTagData.Humidity);

@@ -11,10 +11,12 @@ class InitCompleter : public QObject
 {
     Q_OBJECT
 public:
-    explicit InitCompleter(QQmlApplicationEngine *engine, DataProviderPool *dataProviderPool, SeriesStorage *seriesStorage, const QString &mainFile, const QString &addressString, QObject *parent = nullptr);
+    explicit InitCompleter(QQmlApplicationEngine *engine, SeriesStorage *seriesStorage, const QString &mainFile, const QString &addressString, QObject *parent = nullptr);
 
     Q_INVOKABLE void completeInitialization(int mode, const QString &address);
     Q_INVOKABLE void setMainWindowProperties();
+
+    DataProviderPool *dataProviderPool() const;
 
 private:
     QString m_sensorSource;

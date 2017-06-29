@@ -65,6 +65,7 @@
 #include "clouddataproviderpool.h"
 #include "mockdataprovider.h"
 #include "mockdataproviderpool.h"
+
 #ifdef AZURE_UPLOAD
 #include "cloudupdate.h"
 #endif
@@ -82,7 +83,8 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(QString::fromLatin1(":/resources/base/fonts/titilliumweb/TitilliumWeb-Regular.ttf"));
     app.setFont(QFont("Titillium Web", 13));
 
-    DataProviderPool *dataProviderPool = 0;
+    // Data provider moved to InitCompleter class
+    // DataProviderPool *dataProviderPool = 0;
     SeriesStorage seriesStorage;
 
     QCommandLineParser parser;
@@ -201,7 +203,7 @@ int main(int argc, char *argv[])
     }
 
     QQmlApplicationEngine engine;
-    InitCompleter initCompleter(&engine, dataProviderPool, &seriesStorage, mainFile, addressString);
+    InitCompleter initCompleter(&engine, &seriesStorage, mainFile, addressString);
 
     engine.rootContext()->setContextProperty("pathPrefix", namingScheme + +"/resources/" + uiVariant + "/images/");
     engine.rootContext()->setContextProperty("initCompleter", &initCompleter);
@@ -234,6 +236,6 @@ int main(int argc, char *argv[])
 //    }
 
     int returnValue = app.exec();
-    dataProviderPool->stopScanning();
+    initCompleter.dataProviderPool()->stopScanning();
     return returnValue;
 }

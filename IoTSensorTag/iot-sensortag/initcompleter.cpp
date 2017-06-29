@@ -6,11 +6,11 @@
 #include "demodataproviderpool.h"
 #include "mockdataproviderpool.h"
 
-InitCompleter::InitCompleter(QQmlApplicationEngine *engine, DataProviderPool *dataProviderPool, SeriesStorage *seriesStorage, const QString &mainFile, const QString &addressString, QObject *parent)
+InitCompleter::InitCompleter(QQmlApplicationEngine *engine, SeriesStorage *seriesStorage, const QString &mainFile, const QString &addressString, QObject *parent)
     : QObject(parent),
       m_mainFile(mainFile),
       m_addressString(addressString),
-      m_dataProviderPool(dataProviderPool),
+      m_dataProviderPool(nullptr),
       m_seriesStorage(seriesStorage),
       m_engine(engine)
 {
@@ -44,4 +44,9 @@ void InitCompleter::setMainWindowProperties()
         item->setProperty("seriesStorage", QVariant::fromValue(m_seriesStorage));
         item->setProperty("addresses", m_addressString);
     }
+}
+
+DataProviderPool *InitCompleter::dataProviderPool() const
+{
+    return m_dataProviderPool;
 }

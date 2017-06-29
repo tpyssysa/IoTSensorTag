@@ -35,7 +35,6 @@ Rectangle {
             contentItem: Text {
                 text: simulationButton.text
                 font.pixelSize: Style.topToolbarLargeFontSize
-                color: "white"
                 horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideRight
             }
@@ -55,7 +54,6 @@ Rectangle {
             contentItem: Text {
                 text: sensorButton.text
                 font.pixelSize: !sensorButton.addressQuery ? Style.topToolbarLargeFontSize : Style.indicatorTitleSize
-                color: "white"
                 horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideRight
             }
